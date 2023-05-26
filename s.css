@@ -1,11 +1,13 @@
 
 
 
-
 body {
   margin: 0;
-  background-image: url("https://i.imgur.com/O3Bxs16.gif");
+  background-image: url("https://i.pinimg.com/originals/e1/cd/03/e1cd037aff34ae3aca86e0c6b68b0a2d.gif");
   background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 
@@ -20,13 +22,13 @@ div1 {
 }
 
 #currentDateTime {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    font-size: 16px;
-    font-family: "Courier New", monospace;
-    color: #16bacf;
-    text-align: right;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 16px;
+  font-family: "Courier New", monospace;
+  color: #16bacf;
+  text-align: right;
 }
 
 
@@ -85,11 +87,12 @@ div1 {
   }
   
   button {
+    width: 100px;
     height: 8vh;
-    background-color: #33b6d8ff;
+    background-color: rgb(20, 94, 112);
     color: #060b0f;
     border: none;
-    border-radius: 10px;
+    border-radius: 50px;
     position: absolute;
     bottom: 0; /* Move the button to the bottom */
     overflow: hidden;
@@ -148,6 +151,7 @@ div1 {
   }
   
   
+  
   p {
     color: #33b6d8ff;
     border: 2px solid;
@@ -195,6 +199,17 @@ div1 {
     right: 10px;
 }
 
-  
-  
-  
+#status-icon {
+  position: fixed;
+  top: 30px;
+  right: 20px;
+}
+
+.custom-icon {
+  width: 55px;
+  height: 55px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+

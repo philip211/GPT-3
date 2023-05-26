@@ -1,6 +1,7 @@
 
 let apiKey = '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'
 
+
 // ПЕРЕМЕННЫЕ
 let button = window.document.querySelector('button');
 let p = window.document.querySelector('p');
@@ -16,6 +17,8 @@ let speechSynthesis = window.speechSynthesis;
 
 
 // ФУНКЦИИ
+
+
 const speech = () => {
 speechRecognizer.start();
 button.innerText = 'Говорите';
@@ -116,18 +119,28 @@ console.error('No speech recognition results available.');
 }
 };
 
+
+// Создаем новый элемент div
+var statusIcon = document.createElement("div");
+
+// Устанавливаем идентификатор элемента
+statusIcon.id = "status-icon";
+
+// Добавляем элемент в тело документа (или другой контейнер, который вы хотите использовать)
+document.body.appendChild(statusIcon);
+
+
 // Функция для обновления состояния сети интернет
 function updateNetworkStatus() {
-    var statusText = document.getElementById("status-text");
+  var statusIcon = document.getElementById("status-icon");
   
-    if (navigator.onLine) {
-      statusText.textContent = "Подключено к интернету";
-      statusText.style.color = "green";
-    } else {
-      statusText.textContent = "Нет подключения к интернету";
-      statusText.style.color = "red";
-    }
+  if (navigator.onLine) {
+    statusIcon.innerHTML = '<i class="fas fa-wifi" style="color: #16bacf;"></i>';
+  } else {
+    statusIcon.innerHTML = '<i class="fas fa-wifi" style="color: red;"></i>';
   }
+}
+
   
   // Обработчики событий для изменения состояния сети
   window.addEventListener("online", updateNetworkStatus);
@@ -146,7 +159,7 @@ console.error('Speech recognition error:', event.error);
     var currentDateTimeElement = document.getElementById("currentDateTime");
     var now = new Date();
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
-    var dateTimeString = now.toLocaleString('en-US', options);
+    var dateTimeString = now.toLocaleString('ru-RU', options);
     currentDateTimeElement.textContent = dateTimeString;
 }
 

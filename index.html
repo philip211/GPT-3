@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> #42bab9
+<head> 
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="s.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <title>Document</title>
 
+<style>
+  #loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #030f14;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+  </style>
+
+
+
 <body>
-    
+  
+
+    <div id="loader">
+        <img src="./img/b03ed1b9b76ebba4c57607983ea93b03.gif" alt="Loading...">
+      </div>
+      
+    <img src="./img/5da04f8387ab1bea3f9f11296902c6d2.gif" alt="AI" class="custom-icon">
+
+
 
     <div1 id="currentDateTime"></div1>
 
@@ -23,10 +51,18 @@
 
 <p></p>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+<script>
+  window.addEventListener("load", function() {
+  var loader = document.getElementById("loader");
+  setTimeout(function() {
+    loader.style.display = "none";
+  }, 2000); // 2000 миллисекунд = 2 секунды
+});
 
+  </script>
 
+<link rel="stylesheet" href="s.css">
 <script src="script.js"></script>
 
 </body>
