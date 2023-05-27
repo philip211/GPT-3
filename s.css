@@ -69,7 +69,7 @@ div1 {
     }
   }
   
-  body {
+   body {
     border: 5px solid;
     border-image-slice: 1;
     animation: gradient-border 1s linear infinite;
@@ -80,76 +80,39 @@ div1 {
     height: 100vh;
   }
   
-  button, p {
-    width: 70%;
-    margin: 2vh auto;
-    font-size: 5vh;
-  }
-  
-  button {
-    width: 100px;
-    height: 8vh;
-    background-color: rgb(20, 94, 112);
-    color: #060b0f;
+ 
+   #assistantButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background-color: #0b0c0c;
+    color: #000000;
+    font-size: 16px;
     border: none;
-    border-radius: 50px;
-    position: absolute;
-    bottom: 0; /* Move the button to the bottom */
+    border-radius: 50%;
+    cursor: pointer;
     overflow: hidden;
-    box-shadow: 0 0 10px #33b6d8ff, 0 0 20px #33b6d8ff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
-  button::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    border: 2px solid #33b6d8ff;
-    border-radius: 10px;
-    opacity: 0;
-    transition: opacity 0.3s, border-color 0.3s;
-    animation: neon_colors 2s linear infinite;
+  #assistantButton img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
   }
   
-  button:hover::before {
-    opacity: 1;
-    border-color: #ffffff;
-  }
   
-  button:focus {
-    outline: none;
+  #assistantButton:hover {
+    background-color: #000000;
   }
-  
-  @keyframes neon_colors {
-    0% {
-      border-color: #33b6d8ff;
-    }
-    50% {
-      border-color: #e842f4ff;
-    }
-    100% {
-      border-color: #33b6d8ff;
-    }
-  }
-  
-  @keyframes neon_pulse {
-    0% {
-      box-shadow: 0 0 10px #33b6d8ff, 0 0 20px #33b6d8ff;
-    }
-    50% {
-      box-shadow: 0 0 20px #33b6d8ff, 0 0 40px #33b6d8ff;
-    }
-    100% {
-      box-shadow: 0 0 10px #33b6d8ff, 0 0 20px #33b6d8ff;
-    }
-  }
-  
-  button:focus::before {
-    animation: neon_pulse 1.5s infinite;
-  }
-  
   
   
   p {

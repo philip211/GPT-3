@@ -20,9 +20,10 @@ let speechSynthesis = window.speechSynthesis;
 
 
 const speech = () => {
-speechRecognizer.start();
-button.innerText = 'Говорите';
-}
+  speechRecognizer.start();
+  button.innerHTML = '<img src="./img/61151d6f9ff7cf715fff831c885a08ab.gif" alt="Говорите">';
+};
+
 const talk = (text) => {
 if ('speechSynthesis' in window) {
 const textToTalk = new SpeechSynthesisUtterance(text);
@@ -67,7 +68,7 @@ Authorization: `Bearer ${apiKey}`,
 
 const requestFunc = () => {
 if (p.innerText) {
-button.innerText = 'Отправка...';
+  button.innerHTML = '<img src="./img/60d2c1320c179e49c76c31ea08bc187e.gif">';//----- отправка
 button.style.animation = 'button_anim 2s infinite';
 
 const message = {
@@ -92,7 +93,7 @@ content: response.data.choices[0].message.content,
 conversation.push(gptMessage);
 
 p.innerText = gptMessage.content;
-button.innerText = 'Задать вопрос';
+button.innerHTML = '<img src="./img/ba5a84d4402d8b00adb49ff0aa1dfc49.gif">';
 button.style.animation = 'none';
 
 talk(p.innerText);
