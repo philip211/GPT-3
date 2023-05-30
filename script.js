@@ -1,5 +1,5 @@
 
-let apiKey = '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'
+let apiKey = 'тут должен бытть ваш api ключь '
 
 
 // ПЕРЕМЕННЫЕ
