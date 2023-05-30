@@ -1,5 +1,5 @@
 
-let apiKey = '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'
+let apiKey = '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'
 
 
 // ПЕРЕМЕННЫЕ
@@ -21,7 +21,7 @@ let speechSynthesis = window.speechSynthesis;
 
 const speech = () => {
   speechRecognizer.start();
-  button.innerHTML = '<img src="./img/61151d6f9ff7cf715fff831c885a08ab.gif" alt="Говорите">';
+  button.innerHTML = '<img src="./img/говорите.gif" alt="Говорите">';
 };
 
 const talk = (text) => {
@@ -30,7 +30,7 @@ const textToTalk = new SpeechSynthesisUtterance(text);
 textToTalk.rate = 1.1; // Скорость речи (0.1 - 10)
 textToTalk.pitch = 1.0; // Высота тона речи (0 - 2)
 textToTalk.volume = 1.0; // Громкость речи (0 - 1)
-textToTalk.lang ='en-US', 'ru-RU'; // Язык речи (например, 'en-US', 'ru-RU')
+textToTalk.lang = 'ru-RU'; // Язык речи (например, 'en-US', 'ru-RU')
 textToTalk.voiceURI = 'Microsoft Zira Desktop'; // URI голоса (например, 'Microsoft Zira Desktop', 'Google UK English Female')
 textToTalk.voice = speechSynthesis.getVoices()[0]; // Выбор конкретного голоса из доступных
 
@@ -93,7 +93,7 @@ content: response.data.choices[0].message.content,
 conversation.push(gptMessage);
 
 p.innerText = gptMessage.content;
-button.innerHTML = '<img src="./img/ba5a84d4402d8b00adb49ff0aa1dfc49.gif">';
+button.innerHTML = '<img src="./img/кнопка.jpg">';
 button.style.animation = 'none';
 
 talk(p.innerText);
@@ -106,6 +106,17 @@ console.error('Error while making the request:', error);
 });
 }
 };
+
+
+function toggleVisibility() {
+  var paragraph = document.getElementById("hidden-paragraph");
+  if (paragraph.style.display === "none") {
+    paragraph.style.display = "block";
+  } else {
+    paragraph.style.display = "none";
+  }
+}
+
 
 
 
@@ -160,7 +171,7 @@ console.error('Speech recognition error:', event.error);
     var currentDateTimeElement = document.getElementById("currentDateTime");
     var now = new Date();
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
-    var dateTimeString = now.toLocaleString('ru-RU', options);
+    var dateTimeString = now.toLocaleString('en-EN', options);
     currentDateTimeElement.textContent = dateTimeString;
 }
 

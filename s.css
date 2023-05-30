@@ -1,85 +1,34 @@
 
-
-
 body {
-  margin: 0;
-  background-image: url("https://i.pinimg.com/originals/e1/cd/03/e1cd037aff34ae3aca86e0c6b68b0a2d.gif");
+  margin: 20px;
+  width: 430px;
+  height: 740px;
+  background-image: url("./img/ФОН.jpg");
   background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+  background-position: center;
   background-attachment: fixed;
 }
 
 
-
-  
-/* Стилизация даты и времени */
-div1 {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: inline-block;
-}
-
 #currentDateTime {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  font-size: 16px;
+  width: 70px;
+  height: 130px;
+  font-size: 14px;
   font-family: "Courier New", monospace;
-  color: #16bacf;
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #25b6aa;
+  background-image: url("./img/рамка\ для\ часов.jpg");
+  background-size: cover;
+  background-position: center;
+  justify-content: center;
+  text-align: center;
+  position: fixed;
+  top: 0px;
+  right: 0px;
 }
 
-
-
-
-  body {
-    background-color: #000000;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 99vh;
-  }
-  
-  
-  @keyframes gradient-border {
-    0% {
-      border-image: linear-gradient(45deg,  #33b6d8ff, #008cff, #8400ff, #17dbd1, #0000ff, #8b00ff, #33b6d8ff) 1;
-    }
-    16.67% {
-      border-image: linear-gradient(45deg, #008cff #8400ff, #17dbd1, #0000ff, #8b00ff,  #33b6d8ff, #008cff) 1;
-    }
-    33.33% {
-      border-image: linear-gradient(45deg, #8400ff, #17dbd1, #0000ff, #8b00ff,  #33b6d8ff, #008cff, #8400ff) 1;
-    }
-    50% {
-      border-image: linear-gradient(45deg, #17dbd1, #0000ff, #8b00ff, #33b6d8ff, #008cff, #8400ff, #17dbd1) 1;
-    }
-    66.67% {
-      border-image: linear-gradient(45deg, #0000ff, #8b00ff,  #33b6d8ff, #008cff, #8400ff, #17dbd1, #0000ff) 1;
-    }
-    83.33% {
-      border-image: linear-gradient(45deg, #8b00ff,  #33b6d8ff, #008cff, #8400ff, #17dbd1, #0000ff, #8b00ff) 1;
-    }
-    100% {
-      border-image: linear-gradient(45deg,  #33b6d8ff, #008cff, #8400ff, #17dbd1, #0000ff, #8b00ff,  #33b6d8ff) 1;
-    }
-  }
-  
-   body {
-    border: 5px solid;
-    border-image-slice: 1;
-    animation: gradient-border 1s linear infinite;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
  
    #assistantButton {
     display: flex;
@@ -114,22 +63,120 @@ div1 {
     background-color: #000000;
   }
   
-  
-  p {
+
+  .burger-menu {
+    position: relative;
     color: #33b6d8ff;
-    border: 2px solid;
+    border: none;
     border-image: linear-gradient(45deg, #33b6d8ff, #00396eff, #33b6d8ff);
     border-image-slice: 1;
     overflow: auto;
     max-height: 50vh;
     align-self: flex-end;
-    font-family: "Oswald", Arial, sans-serif; 
+    font-family: "Oswald", Arial, sans-serif;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   }
+  
+  .burger-menu::before {
+    content: "";
+    position: fixed;
+    top: 600px;
+    right: 0px;
+    width: 200px;
+    height: 100px;
+    background-image: url(./img/рамка\ для\ меню\ .jpg);
+    background-size: cover;
+    background-position: center;
+    /* opacity: 0.5; */
+    z-index: -1;
+  }
+  
+  .menu-item {
+    margin-bottom: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .menu-item:hover {
+    transform: scale(1.1);
+  }
+  
+  
+  .menu-item {
+    margin-bottom: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .menu-item:hover {
+    transform: scale(1.1);
+  }
+  
+  
+  #hidden-paragraph {
+    display: none;
+    color: #33b6d8ff;
+    position: fixed;
+    top: 300px;
+    right: 220px;
+    border: none; 
+    background-image: url(./img/РАМКА\ ПОД\ ТЕКСТ.jpg); 
+    background-size: cover;
+    background-position: center;
+    overflow: auto;
+    max-height: 50vh;
+    align-self: flex-end;
+    font-family: "Courier New", monospace;
+  }
+  
+  #hidden-paragraph {
+    display: none;
+    color: #33b6d8ff; 
+    border-image-slice: 2;
+    overflow: auto;
+    max-height: 50vh;
+    align-self: flex-end;
+    font-family: "Courier New", monospace;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .burger-menu button {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 625px;
+    right: 40px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .burger-menu img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .menu-item {
+    margin: 10px 0;
+    padding: 5px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
   
   
   @media screen and (max-width: 800px) {
     button, p {
-      width: 100%;
+      width: 50%;
       margin-left: 0;
     }
   
@@ -159,20 +206,58 @@ div1 {
     font-size: 16px;
     position: absolute;
     top: 30px;
-    right: 10px;
+    right: 0px;
+    justify-content: center;
+    text-align: center;
 }
 
 #status-icon {
   position: fixed;
   top: 30px;
-  right: 20px;
+  right: 80px;
+}
+
+.frame-icon {
+  display: block;
+  width: 70px;
+  height: 80px;
+  position: fixed;
+  top: 0px;
+  right: 70px;
+}
+
+.logoFrame {
+  display: block;
+  width: 70px;
+  height: 80px;
+  position: fixed;
+  top: 0px;
+  right: 110px;
 }
 
 .custom-icon {
-  width: 55px;
-  height: 55px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  width: 50px;
+  height: 40px;
+  position: fixed;
+  top: 18px;
+  right: 120px;
+  
+}
+
+.frame-analysis{
+  width: 240px;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  right: 175px;
+}
+
+.analysis{
+  display: block;
+  width: 215px;
+  height: 70px;
+  position: fixed;
+  top: 5px;
+  right: 190px;
 }
 
