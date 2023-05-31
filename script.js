@@ -138,7 +138,7 @@ var statusIcon = document.createElement("div");
 // Устанавливаем идентификатор элемента
 statusIcon.id = "status-icon";
 
-// Добавляем элемент в тело документа (или другой контейнер, который вы хотите использовать)
+// Добавляем элемент в тело документа
 document.body.appendChild(statusIcon);
 
 
