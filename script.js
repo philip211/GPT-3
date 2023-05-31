@@ -35,11 +35,7 @@ textToTalk.voiceURI = 'Microsoft Zira Desktop';
 textToTalk.voice = speechSynthesis.getVoices()[0]; // Выбор конкретного голоса из доступных
 
 
-// Получение доступных голосов
-const voices = speechSynthesis.getVoices();
-
-
-// Поиск женского голоса с наиболее нежной высотой тона
+//поиск женского голоса 
 const femaleVoices = voices.filter((voice) => voice.gender === 'female');
 const gentlestFemaleVoice = femaleVoices.reduce(
 (gentlestVoice, currentVoice) =>
