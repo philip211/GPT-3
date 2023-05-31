@@ -31,7 +31,7 @@ textToTalk.rate = 1.1; // Скорость речи (0.1 - 10)
 textToTalk.pitch = 1.0; // Высота тона речи (0 - 2)
 textToTalk.volume = 1.0; // Громкость речи (0 - 1)
 textToTalk.lang = 'ru-RU'; // Язык речи (например, 'en-US', 'ru-RU')
-textToTalk.voiceURI = 'Microsoft Zira Desktop'; // URI голоса (например, 'Microsoft Zira Desktop', 'Google UK English Female')
+textToTalk.voiceURI = 'Microsoft Zira Desktop'; 
 textToTalk.voice = speechSynthesis.getVoices()[0]; // Выбор конкретного голоса из доступных
 
 
