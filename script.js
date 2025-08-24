@@ -8,8 +8,25 @@ let p = window.document.querySelector('p');
 let conversation = JSON.parse(localStorage.getItem('conversation') || '[]');
 
 
-// Для распознавания речи
-let speechRecognizer = new webkitSpeechRecognition();
+// Для распознавания речи (кроссбраузерная инициализация)
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+let speechRecognizer = SpeechRecognition ? new SpeechRecognition() : null;
+let isListening = false;
+if (!speechRecognizer) {
+  console.error('Speech recognition is not supported in this browser.');
+}
+
+if (speechRecognizer) {
+  speechRecognizer.onstart = () => {
+    isListening = true;
+  };
+  speechRecognizer.onend = () => {
+    isListening = false;
+    button.innerHTML = '<img src="./img/кнопка.jpg">';
+    button.style.animation = 'none';
+  };
+}
 
 
 // Для синтез речи
@@ -105,25 +122,55 @@ if (clearHistoryBtn) {
 
 
 const speech = () => {
-  speechRecognizer.start();
-  button.innerHTML = '<img src="./img/говорите.gif" alt="Говорите">';
+  if (!speechRecognizer) {
+    talk('Ваш браузер не поддерживает распознавание речи');
+    return;
+  }
+  if (isListening) {
+    speechRecognizer.stop();
+    speechSynthesis.cancel();
+    button.innerHTML = '<img src="./img/кнопка.jpg">';
+    button.style.animation = 'none';
+  } else {
+    speechRecognizer.start();
+    button.innerHTML = '<img src="./img/говорите.gif" alt="Говорите">';
+  }
+  isListening = !isListening;
 };
 
 const talk = (text) => {
-if ('speechSynthesis' in window) {
-  const utterance = new SpeechSynthesisUtterance(text);
-  const selectedVoice = voices.find((voice) => voice.name === voiceSelect.value);
-  if (selectedVoice) {
-    utterance.voice = selectedVoice;
-    utterance.lang = selectedVoice.lang;
+  if ('speechSynthesis' in window) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    const selectedVoice = voices.find((voice) => voice.name === voiceSelect.value);
+    if (selectedVoice) {
+      utterance.voice = selectedVoice;
+      utterance.lang = selectedVoice.lang;
+    }
+    utterance.rate = parseFloat(rateInput.value);
+    utterance.pitch = parseFloat(pitchInput.value);
+    utterance.volume = parseFloat(volumeInput.value);
+
+    utterance.onstart = () => {
+      if (speechRecognizer && isListening) {
+        speechRecognizer.stop();
+        isListening = false;
+        button.innerHTML = '<img src="./img/кнопка.jpg">';
+        button.style.animation = 'none';
+      }
+    };
+
+    utterance.onend = () => {
+      if (speechRecognizer && !isListening) {
+        speechRecognizer.start();
+        isListening = true;
+        button.innerHTML = '<img src="./img/говорите.gif" alt="Говорите">';
+      }
+    };
+
+    speechSynthesis.speak(utterance);
+  } else {
+    console.error('Speech synthesis is not supported in this browser.');
   }
-  utterance.rate = parseFloat(rateInput.value);
-  utterance.pitch = parseFloat(pitchInput.value);
-  utterance.volume = parseFloat(volumeInput.value);
-  speechSynthesis.speak(utterance);
-} else {
-  console.error('Speech synthesis is not supported in this browser.');
-}
 };
 
 
@@ -176,6 +223,7 @@ console.error('No response or empty choices from OpenAI API.');
 })
 .catch((error) => {
 console.error('Error while making the request:', error);
+talk('Произошла ошибка при обращении к серверу');
 });
 }
 };
