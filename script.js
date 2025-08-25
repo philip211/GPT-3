@@ -1,11 +1,17 @@
-
 let apiKey = 'тут должен бытть ваш api ключь '
-
 
 // ПЕРЕМЕННЫЕ
 let button = window.document.querySelector('button');
 let p = window.document.querySelector('p');
 let conversation = JSON.parse(localStorage.getItem('conversation') || '[]');
+
+const setDefaultButton = () => {
+  button.innerHTML = '<i class="fas fa-microphone"></i>';
+  button.classList.remove('listening');
+  button.style.animation = 'none';
+};
+
+setDefaultButton();
 
 
 // Для распознавания речи (кроссбраузерная инициализация)
@@ -22,9 +28,8 @@ if (speechRecognizer) {
     isListening = true;
   };
   speechRecognizer.onend = () => {
-    isListening = false;
-    button.innerHTML = '<img src="./img/кнопка.jpg">';
-    button.style.animation = 'none';
+      isListening = false;
+      setDefaultButton();
   };
 }
 
@@ -126,15 +131,14 @@ const speech = () => {
     talk('Ваш браузер не поддерживает распознавание речи');
     return;
   }
-  if (isListening) {
-    speechRecognizer.stop();
-    speechSynthesis.cancel();
-    button.innerHTML = '<img src="./img/кнопка.jpg">';
-    button.style.animation = 'none';
-  } else {
-    speechRecognizer.start();
-    button.innerHTML = '<img src="./img/говорите.gif" alt="Говорите">';
-  }
+    if (isListening) {
+      speechRecognizer.stop();
+      speechSynthesis.cancel();
+      setDefaultButton();
+    } else {
+      speechRecognizer.start();
+      button.classList.add('listening');
+    }
   isListening = !isListening;
 };
 
@@ -152,18 +156,17 @@ const talk = (text) => {
 
     utterance.onstart = () => {
       if (speechRecognizer && isListening) {
-        speechRecognizer.stop();
-        isListening = false;
-        button.innerHTML = '<img src="./img/кнопка.jpg">';
-        button.style.animation = 'none';
+          speechRecognizer.stop();
+          isListening = false;
+          setDefaultButton();
       }
     };
 
     utterance.onend = () => {
       if (speechRecognizer && !isListening) {
-        speechRecognizer.start();
-        isListening = true;
-        button.innerHTML = '<img src="./img/говорите.gif" alt="Говорите">';
+          speechRecognizer.start();
+          isListening = true;
+          button.classList.add('listening');
       }
     };
 
@@ -184,8 +187,8 @@ Authorization: `Bearer ${apiKey}`,
 
 const requestFunc = () => {
 if (p.innerText) {
-  button.innerHTML = '<img src="./img/60d2c1320c179e49c76c31ea08bc187e.gif">';//----- отправка
-button.style.animation = 'button_anim 2s infinite';
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';//----- отправка
+    button.classList.remove('listening');
 
 const message = {
 role: 'user',
@@ -213,8 +216,7 @@ saveConversation();
 updateChatHistory();
 
 p.innerText = gptMessage.content;
-button.innerHTML = '<img src="./img/кнопка.jpg">';
-button.style.animation = 'none';
+  setDefaultButton();
 
 talk(p.innerText);
 } else {

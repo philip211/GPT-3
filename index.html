@@ -11,9 +11,7 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="loader">
-    <img src="./img/3d8064758e54ec662e076b6ca54aa90e.gif" alt="Loading...">
-  </div>
+  <div id="loader"></div>
 
   <div id="currentDateTime"></div>
 
@@ -21,9 +19,7 @@
     <span id="status-text"></span>
   </div>
 
-  <button onclick="speech()" id="assistantButton">
-    <img src="./img/главная кнопка.jpg" alt="Assistant Icon">
-  </button>
+  <button onclick="speech()" id="assistantButton"><i class="fas fa-microphone"></i></button>
 
   <div class="burger-menu">
     <p id="hidden-paragraph"></p>
@@ -44,24 +40,9 @@
         Светлая тема
       </label>
     </div>
-    <button onclick="toggleVisibility()">
-      <img src="./img/кнопка для меню.jpg" alt="Изображение кнопки">
-    </button>
+    <button onclick="toggleVisibility()" class="menu-toggle"><i class="fas fa-bars"></i></button>
   </div>
 
-  <div id="frame-icon">
-    <img class="frame-icon" src="./img/рамка для wifi.jpg" alt="Картинка">
-  </div>
-
-  <div id="logoFrame">
-    <img class="logoFrame" src="./img/рамка под логотип.jpg" alt="logo-frame">
-    <img class="custom-icon" src="./img/логотип1.jpg" alt="AI">
-  </div>
-
-  <div id="analysis">
-    <img class="frame-analysis" src="./img/рамка анализа .jpg" alt="frame-analysis">
-    <img class="analysis" src="./img/Аналитика.gif" alt="analysis">
-  </div>
 
   <script>
     window.addEventListener("load", function () {
